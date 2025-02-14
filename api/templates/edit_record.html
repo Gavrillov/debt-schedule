@@ -1,1 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Изменение записи</title>
+  <style>
+     /* Стили для поиска */
+        .search-input {
+            margin-bottom: 2px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* Светлый фон */
+            color: #333; /* Темный текст */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center; /* Центрируем по горизонтали */
+            align-items: center; /* Центрируем по вертикали */
+            height: 100vh; /* Высота на весь экран */
+        }
 
+        h1 {
+            color: #2980b9; /* Цвет заголовка */
+            margin-bottom: 20px; /* Отступ снизу */
+        }
+
+        form {
+            background-color: white; /* Белый фон формы */
+            padding: 20px; /* Отступы внутри формы */
+            border-radius: 8px; /* Закругленные углы */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
+            width: 350px; /* Ширина формы */
+            display: flex;
+            flex-direction: column; /* Вертикальная ориентация элементов формы */
+        }
+
+        label {
+            margin-bottom: 5px; /* Отступ снизу для меток */
+            font-weight: bold; /* Жирный шрифт для меток */
+        }
+
+        .search-input {
+            margin-bottom: 5px; /* Отступ снизу для поля поиска */
+            padding: 10px; /* Отступы внутри поля ввода */
+            border: 1px solid #ccc; /* Серый цвет границы */
+            border-radius: 5px; /* Закругленные углы поля ввода */
+            box-sizing: border-box; /* Учитываем отступы и границы в ширине */
+        }
+
+        select {
+            padding: 10px; /* Отступы внутри селекта */
+            border: 1px solid #ccc; /* Серый цвет границы */
+            border-radius: 5px; /* Закругленные углы селекта */
+            margin-bottom: 10px; /* Отступ снизу для селекта */
+        }
+
+        button {
+            background-color: #2E8B57; /* Цвет кнопки */
+            color: white; /* Цвет текста кнопки */
+            padding: 10px; /* Отступы кнопки */
+            border: none; /* Убираем границу */
+            font-size : 20px;
+            border-radius: 5px; /* Закругленные углы кнопки */
+            cursor: pointer; /* Курсор при наведении на кнопку */
+            transition: background-color 0.3s; /* Плавный переход цвета фона кнопки */
+        }
+
+        button:hover {
+            background-color: #2980b9; /* Цвет кнопки при наведении */
+        }
+
+      a.btn {
+        display: inline-block; /* Позволяет использовать отступы и размеры */
+        background-color: #FF4040; /* Бледно-красный цвет с прозрачностью */
+        color: white; /* Цвет текста */
+        padding: 10px; /* Отступы кнопки */
+        text-decoration: none; /* Убираем подчеркивание */
+        border-radius: 5px; /* Закругленные углы */
+        transition: background-color 0.3s; /* Плавный переход цвета */
+        margin-top: 20px; /* Отступ сверху */
+        text-align: center; /* Центрируем текст */
+        font-size: 16px; /* Размер шрифта (можно изменить по вашему усмотрению) */
+}
+
+a.btn:hover {
+    background-color: rgba(255, 99, 71, 0.7); /* Цвет при наведении (бледно-красный с большей непрозрачностью) */
+}
+  </style>
+</head>
+<body>
+
+
+    <form method="POST">
+      <h1>Изменение записи</h1>
+        <label for="discipline">Дисциплина:</label><br>
+        <input type="text" id="discipline" class="search-input" name="discipline" value="{{ record.record.discipline }}" required><br><br>
+
+        <label for="teacher">Преподаватель:</label><br>
+        <input type="text" id="teacher" class="search-input" name="teacher" value="{{ record.record.teacher }}" required><br><br>
+
+        <label for="time">Время приема:</label><br>
+        <input type="text" id="time" class="search-input" name="time" value="{{ record.record.time }}" required><br><br>
+
+        <label for="room">Кабинет:</label><br>
+        <input type="text" id="room" class="search-input" name="room" value="{{ record.record.room }}" required><br><br>
+
+        <button type="submit">Изменить запись</button>
+      <br><a href="{{ url_for('manage') }}" class="btn">Назад к записям</a>
+    </form>
+
+
+</body>
+</html>
