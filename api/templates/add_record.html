@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавление записи</title>
+    <style>
+        /* Стили для поиска */
+        .search-input {
+            margin-bottom: 5px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* Светлый фон */
+            color: #333; /* Темный текст */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center; /* Центрируем по горизонтали */
+            align-items: center; /* Центрируем по вертикали */
+            height: 100vh; /* Высота на весь экран */
+        }
+
+        h1 {
+            color: #2980b9; /* Цвет заголовка */
+            margin-bottom: 20px; /* Отступ снизу */
+        }
+
+        form {
+            background-color: white; /* Белый фон формы */
+            padding: 20px; /* Отступы внутри формы */
+            border-radius: 8px; /* Закругленные углы */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
+            width: 350px; /* Ширина формы */
+            display: flex;
+            flex-direction: column; /* Вертикальная ориентация элементов формы */
+        }
+
+        label {
+            margin-bottom: 5px; /* Отступ снизу для меток */
+            font-weight: bold; /* Жирный шрифт для меток */
+        }
+
+        .search-input {
+            margin-bottom: 5px; /* Отступ снизу для поля поиска */
+            padding: 10px; /* Отступы внутри поля ввода */
+            border: 1px solid #ccc; /* Серый цвет границы */
+            border-radius: 5px; /* Закругленные углы поля ввода */
+            box-sizing: border-box; /* Учитываем отступы и границы в ширине */
+        }
+
+        select {
+            padding: 10px; /* Отступы внутри селекта */
+            border: 1px solid #ccc; /* Серый цвет границы */
+            border-radius: 5px; /* Закругленные углы селекта */
+            margin-bottom: 10px; /* Отступ снизу для селекта */
+        }
+
+        button {
+            background-color: #2E8B57; /* Цвет кнопки */
+            color: white; /* Цвет текста кнопки */
+            padding: 10px; /* Отступы кнопки */
+            font-size : 17px;
+            border: none; /* Убираем границу */
+            border-radius: 5px; /* Закругленные углы кнопки */
+            cursor: pointer; /* Курсор при наведении на кнопку */
+            transition: background-color 0.3s; /* Плавный переход цвета фона кнопки */
+        }
+
+        button:hover {
+            background-color: #2980b9; /* Цвет кнопки при наведении */
+        }
+
+      a.btn {
+        display: inline-block; /* Позволяет использовать отступы и размеры */
+        background-color: #FF4040; /* Бледно-красный цвет с прозрачностью */
+        color: white; /* Цвет текста */
+        padding: 10px; /* Отступы кнопки */
+        text-decoration: none; /* Убираем подчеркивание */
+        border-radius: 5px; /* Закругленные углы */
+        transition: background-color 0.3s; /* Плавный переход цвета */
+        margin-top: 20px; /* Отступ сверху */
+        text-align: center; /* Центрируем текст */
+        font-size: 16px; /* Размер шрифта (можно изменить по вашему усмотрению) */
+}
+
+a.btn:hover {
+    background-color: rgba(255, 99, 71, 0.7); /* Цвет при наведении (бледно-красный с большей непрозрачностью) */
+}
+    </style>
+    <script>
+        function filterOptions(selectId, inputId) {
+            const input = document.getElementById(inputId);
+            const filter = input.value.toLowerCase();
+            const select = document.getElementById(selectId);
+            const options = select.options;
+
+            for (let i = 1; i < options.length; i++) { // Начинаем с 1, чтобы пропустить первый элемент (пустой)
+                const txtValue = options[i].text.toLowerCase();
+                options[i].style.display = txtValue.includes(filter) ? "" : "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+
+    <form method="POST">
+      <h1>Добавление записи</h1>
+        <label for="discipline">Дисциплина:</label><br>
+        <input type="text" id="searchDiscipline" class="search-input" onkeyup="filterOptions('disciplineSelect', 'searchDiscipline')" placeholder="Поиск дисциплины">
+        <select id="disciplineSelect" name="discipline" required>
+            <option value="">Выберите дисциплину</option>
+            <option value="Русский язык, Литература, Основы деловой коммуникации">Русский язык, Литература, Основы деловой коммуникации</option>
+            <option value="Математика">Математика</option>
+            <option value="География, история">География, история</option>
+            <option value="Информатика, Индивидуальный проект, ИТ в ПД, Моделирование, ЦТвЛ">Информатика, Индивидуальный проект, ИТ в ПД, Моделирование, ЦТвЛ</option>
+            <option value="История, география, Обществознание">История, география, Обществознание</option>
+            <option value="Инженерная графика, МСиС">Инженерная графика, МСиС</option>
+            <option value="Ин. язык, экспедирование">Ин. язык, экспедирование</option>
+            <option value="Основы философии, обществознание">Основы философии, обществознание</option>
+            <option value="Ин. язык">Ин. язык</option>
+            <option value="История, ПОПД, История России">История, ПОПД, История России</option>
+            <option value="Физика">Физика</option>
+            <option value="Физическая культура">Физическая культура</option>
+            <option value="ОБЖ">ОБЖ</option>
+            <option value="МДК.01.02, ЭСУ в ПД, МДК.05.02, ТИС, Проектирование и разработка интерфейсов">МДК.01.02, ЭСУ в ПД, МДК.05.02, ТИС, Проектирование и разработка интерфейсов</option>
+            <option value="МДК.01.01, МДК.03.02">МДК.01.01, МДК.03.02</option>
+            <option value="МДК.01.01, МДК.03.01">МДК.01.01, МДК.03.01</option>
+            <option value="МДК.03.03, МДК.02.02">МДК.03.03, МДК.02.02</option>
+            <option value="МДК.03.03, МДК.03.02, МДК.01.01">МДК.03.03, МДК.03.02, МДК.01.01</option>
+            <option value="МДК.02.01, Технические средства">МДК.02.01, Технические средства</option>
+            <option value="Транспортная система России, Экономические основы">Транспортная система России, Экономические основы</option>
+            <option value="Бухгалтерский учет, Налоги">Бухгалтерский учет, Налоги</option>
+            <option value="Экономика отрасли">Экономика отрасли</option>
+            <option value="МДК.02.02 ,МДК.03.02, МДК.01.02">МДК.02.02 ,МДК.03.02, МДК.01.02</option>
+            <option value="МДК.01.02">МДК.01.02</option>
+            <option value="МДК.02.02, МДК.02.03">МДК.02.02, МДК.02.03</option>
+            <option value="ФКи Н, АФХД">ФКи Н, АФХД</option>
+            <option value="ДОУ, МДК.01.03, Статистика">ДОУ, МДК.01.03, Статистика</option>
+            <option value="МДК.01.01, Оперативный учет">МДК.01.01, Оперативный учет</option>
+            <option value="МДК.02.01, Экономика организации, Управление качеством">МДК.02.01, Экономика организации, Управление качеством</option>
+            <option value="Бережливое производство, Менеджмент, Оперативный учет">Бережливое производство, Менеджмент, Оперативный учет</option>
+            <option value="Практика">Практика</option>
+           <option value="МДК 02.02">МДК 02.02</option>
+        </select><br><br>
+        <label for="teacher">Преподаватель:</label><br>
+        <input type="text" id="searchTeacher" class="search-input" onkeyup="filterOptions('teacherSelect', 'searchTeacher')" placeholder="Поиск преподавателя">
+        <select id="teacherSelect" name="teacher" required>
+            <option value="">Выберите преподавателя</option>
+            <option value="Власова Л.В.">Власова Л.В.</option>
+            <option value="Жукова Т.С.">Жукова Т.С.</option>
+            <option value="Коблов Д.М.">Коблов Д.М.</option>
+            <option value="Горчакова Е.В.">Горчакова Е.В.</option>
+            <option value="Сысоев Д.А.">Сысоев Д.А.</option>
+            <option value="Оганесян М.П.">Оганесян М.П.</option>
+            <option value="Атаманюк С.С.">Атаманюк С.С.</option>
+            <option value="Семенова А.Ю.">Семенова А.Ю.</option>
+            <option value="Прохоров П.А.">Прохоров П.А.</option>
+            <option value="Жаркова Н.Ю.">Жаркова Н.Ю.</option>
+            <option value="Трисвяцкая А.А.">Трисвяцкая А.А.</option>
+            <option value="Огнева М.А.">Огнева М.А.</option>
+            <option value="Капнулин С.А.">Капнулин С.А.</option>
+            <option value="Красилин А.М.">Красилин А.М.</option>
+            <option value="Журавлев Р.В.">Журавлев Р.В.</option>
+            <option value="Акопян Э.А.">Акопян Э.А.</option>
+            <option value="Сухова К.А.">Сухова К.А.</option>
+            <option value="Панякина О.В.">Панякина О.В.</option>
+            <option value="Кузнецов А.А.">Кузнецов А.А.</option>
+            <option value="Терешкина С.Д.">Терешкина С.Д.</option>
+            <option value="Клочкова Г.И.">Клочкова Г.И.</option>
+            <option value="Головина С.Н.">Головина С.Н.</option>
+            <option value="Тимченко Т.Е." >Тимченко Т.Е.</option>
+            <option value="Илюхина А.Г." >Илюхина А.Г.</option>
+            <option value="Илюхин А.С." >Илюхин А.С.</option>
+            <option value="Рычкова М.А." >Рычкова М.А.</option>
+            <option value="Караваева Е.В." >Караваева Е.В.</option>
+            <option value="Соловьева Н.В." >Соловьева Н.В.</option>
+            <option value="Мякушкина О.В." >Мякушкина О.В.</option>
+            <option value="Орлов В.В." >Орлов В.В.</option>
+            <option value="Мочалкина А.А." >Мочалкина А.А.</option>
+            <option value="Ашуркина Э.Д." >Ашуркина Э.Д.</option>
+            <option value="Панов А.В." >Панов А.В.</option>
+            <option value="Кронова Н.А." >Кронова Н.А.</option>
+        </select><br><br>
+
+        <label for="time">Время приема:</label><br>
+        <input type="text" class="search-input" id="time" name="time" required><br><br>
+
+        <label for="room">Кабинет:</label><br>
+        <input type="text" class="search-input" id="room" name="room" required><br><br>
+
+        <button type="submit">Добавить запись</button>
+      <br><a href="{{ url_for('manage') }}" class="btn">Назад к записям</a>
+    </form>
+
+
+
+</body>
+</html>
