@@ -84,7 +84,7 @@ def add_record():
         time = request.form.get('time')
         room = request.form.get('room')
         global db
-        db.push(Record(discipline, teacher, time, room)
+        db.push(Record(discipline, teacher, time, room))
         refresh()
         return redirect(url_for('manage'))
     
@@ -102,7 +102,7 @@ def edit_record(index):
         time = request.form.get('time')
         room = request.form.get('room')
         global db
-        db.update(StudentModel(records[index].key, Record(discipline, teacher, time, room).to_dict())
+        db.update(StudentModel(records[index].key, Record(discipline, teacher, time, room)).to_dict())
         refresh()
         return redirect(url_for('manage'))
 
