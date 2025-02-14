@@ -39,7 +39,7 @@ def refresh():
     if ordered_dict_students == None:
         return
     for key in ordered_dict_students.keys():
-        records.append(RecordModel(key, Student.from_dict(ordered_dict_students[key])))
+        records.append(RecordModel(key, Record.from_dict(ordered_dict_students[key])))
         
 @app.route('/')
 def index():
@@ -103,7 +103,7 @@ def edit_record(index):
         time = request.form.get('time')
         room = request.form.get('room')
         global db
-        db.update(StudentModel(records[index].key, Record(discipline, teacher, time, room)).to_dict())
+        db.update(RecordModel(records[index].key, Record(discipline, teacher, time, room)).to_dict())
         refresh()
         return redirect(url_for('manage'))
 
