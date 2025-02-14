@@ -21,10 +21,10 @@ class Record:
     @classmethod
     def from_dict(cls, data: dict) -> 'Student':
         return cls(
-            fio=data['discipline'],
-            start_date=data['teacher'],
-            category=data['time'],
-            group=data['room']
+            discipline=data['discipline'],
+            teacher=data['teacher'],
+            time=data['time'],
+            room=data['room']
         )
 
 
