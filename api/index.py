@@ -14,7 +14,7 @@ PASSWORD = 'madk9KAT%%23'
 
 firebase_config = {
       "apiKey": "AIzaSyDbxKzF0qEGPpQV1x9PTlfTmTHlrRiuGsg",
-    "databaseURL" : "https://debt-schedule-3ca23-default-rtdb.europe-west1.firebasedatabase.app/"
+    "databaseURL" : "https://debt-schedule-3ca23-default-rtdb.europe-west1.firebasedatabase.app/",
       "authDomain": "debt-schedule-3ca23.firebaseapp.com",
       "projectId": "debt-schedule-3ca23",
       "storageBucket": "debt-schedule-3ca23.firebasestorage.app",
