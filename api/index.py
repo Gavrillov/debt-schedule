@@ -4,6 +4,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 
 from api.Record import Record, RecordModel
+import pyrebase
 # from WordGenerate import Generate
 
 app = Flask(__name__)
