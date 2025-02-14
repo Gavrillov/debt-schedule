@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <style>
+        /* Общие стили для body */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* Светлый фон */
+            color: #333; /* Темный текст */
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Стили для заголовков */
+        h3 {
+            color: #2c3e50; /* Темно-синий цвет для заголовков */
+            margin: 10px 0; /* Отступы вокруг заголовков */
+        }
+
+        h1 {
+            color: #2980b9; /* Цвет заголовка списка предметов */
+            margin-top: 30px; /* Отступ сверху */
+        }
+
+        /* Стили для таблицы */
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Убираем двойные границы */
+            margin-top: 20px;
+            background-color: white; /* Белый фон таблицы */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Легкая тень для эффекта глубины */
+        }
+
+        th, td {
+            padding: 12px; /* Отступы внутри ячеек */
+            text-align: left; /* Выравнивание текста */
+            border-bottom: 1px solid #ddd; /* Легкая граница снизу */
+        }
+
+        th {
+            background-color: #3498db; /* Цвет фона заголовков таблицы */
+            color: white; /* Белый текст для заголовков */
+        }
+
+        tr:hover {
+            background-color: #f1f1f1; /* Цвет строки при наведении */
+        }
+
+        /* Стили для кнопки */
+        a.btn {
+            display: inline-block;
+            background-color: #3498db; /* Цвет кнопки */
+            color: white; /* Цвет текста кнопки */
+            padding: 10px 20px; /* Отступы кнопки */
+            text-decoration: none; /* Убираем подчеркивание */
+            border-radius: 5px; /* Закругленные углы */
+            transition: background-color 0.3s; /* Плавный переход цвета */
+            margin-top: 20px; /* Отступ сверху */
+        }
+
+        a.btn:hover {
+            background-color: #2980b9; /* Цвет кнопки при наведении */
+        }
+    </style>
+</head>
+<body>
+<h3>УТВЕРЖДАЮ</h3>
+<h3>Зав. отделением Перевозок на </h3>
+<h3>автомобильном транспорте</h3>
+<h3> _____________Н.А.Кронова</h3>
+<a href="{{ url_for('login') }}" class="btn">Авторизоваться</a>
+<h1>График приема задолжностей УП Вятская</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Дисциплина</th>
+            <th>Преподаватели</th>
+            <th>Время приема</th>
+            <th>Кабинет</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for record in records %}
+            <tr>
+                <td>{{ record.record.discipline }}</td>
+                <td>{{ record.record.teacher }}</td>
+                <td>{{ record.record.time }}</td>
+                <td>{{ record.record.room }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+</body>
+</html>
